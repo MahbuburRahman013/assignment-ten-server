@@ -38,6 +38,8 @@ async function run() {
 
     app.post('/addToCart', async(req , res) => {
         const data = req.body;
+        const result = await cartCollection.insertOne(data);
+        res.send(result)
     })
 
     app.get('/postData/:brand', async(req , res)=>{
