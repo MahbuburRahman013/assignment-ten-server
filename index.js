@@ -43,7 +43,8 @@ async function run() {
     })
 
     app.get('/loadCartData', async(req , res) => {
-        const result = await cartCollection.find();
+        const loadData =  cartCollection.find();
+        const result = await loadData.toArray()
         res.send(result)
     })
 
@@ -81,6 +82,13 @@ async function run() {
         const result = await brandCollection.updateOne(filter,updateDoc,options);
         res.send(result)
 
+    })
+
+    app.delete('/deleteProduct/:id', async(req , res) =>{
+        const id = req.params.id;
+        const query = {_id: new ObjectId(id)};
+        const result = await cartCollection.deleteOne(query);
+        res.send(result)
     })
 
 
