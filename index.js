@@ -42,6 +42,11 @@ async function run() {
         res.send(result)
     })
 
+    app.get('/loadCartData', async(req , res) => {
+        const result = await cartCollection.find();
+        res.send(result)
+    })
+
     app.get('/postData/:brand', async(req , res)=>{
         const brandName = req.params.brand;
         const query = {brand: brandName};
