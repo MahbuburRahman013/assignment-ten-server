@@ -28,11 +28,16 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     const brandCollection = client.db('Brands').collection('products')
+    const cartCollection = client.db('Brands').collection('cartProducts')
 
     app.post('/postData', async(req , res) =>{
         const data = req.body;
         const result = await brandCollection.insertOne(data);
         res.send(result)
+    })
+
+    app.post('/addToCart', async(req , res) => {
+        const data = req.body;
     })
 
     app.get('/postData/:brand', async(req , res)=>{
