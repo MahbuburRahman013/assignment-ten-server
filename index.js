@@ -50,26 +50,26 @@ async function run() {
         res.send(result)
     })
 
-    // app.put('/updateProduct/:id', async(req, res) => {
-    //     const id = req.params.id;
-    //     const update = req.body;
-    //     const filter = {_id: new ObjectId(id)};
-    //     const options = { upsert: true };
-    //     const updateDoc = {
-    //         $set:{
-    //                   name:update.name,
-    //                   photo:update.photo,
-    //                   brand:update.brand,
-    //                   type:update.type,
-    //                   price:update.price,
-    //                   rating:update.rating,
-    //         }
-    //     }
+    app.put('/updateProduct/:id', async(req, res) => {
+        const id = req.params.id;
+        const update = req.body;
+        const filter = {_id: new ObjectId(id)};
+        const options = { upsert: true };
+        const updateDoc = {
+            $set:{
+                      name:update.name,
+                      photo:update.photo,
+                      brand:update.brand,
+                      type:update.type,
+                      price:update.price,
+                      rating:update.rating,
+            }
+        }
 
-    //     const result = await brandCollection.updateOne(filter,updateDoc,options);
-    //     res.send(result)
+        const result = await brandCollection.updateOne(filter,updateDoc,options);
+        res.send(result)
 
-    // })
+    })
 
 
     // Send a ping to confirm a successful connection
