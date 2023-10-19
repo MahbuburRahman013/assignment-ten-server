@@ -42,8 +42,10 @@ async function run() {
         res.send(result)
     })
 
-    app.get('/loadCartData', async(req , res) => {
-        const loadData =  cartCollection.find();
+    app.get('/loadCartData/:id', async(req , res) => {
+        const uid = req.params.id;
+        const query = {id: uid}
+        const loadData =  cartCollection.find(query);
         const result = await loadData.toArray()
         res.send(result)
     })
